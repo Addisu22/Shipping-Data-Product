@@ -1,11 +1,11 @@
 import psycopg2
-from config import pgsql_host, pgsql_port, pgsql_db, pgsql_user, pgsql_pass
+from config import host, port, db, user, password
 
 def getpgsql_connect():
     conn = psycopg2.connect(
-							host = pgsql_host,
-							port = pgsql_port,
-							db   = pgsql_db,
-							user = pgsql_user,
-							password = pgsql_pass
+							host = host,
+							port = port,
+							db   = db,
+							user = user,
+							password = password
     )

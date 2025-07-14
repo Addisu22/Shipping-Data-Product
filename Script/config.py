@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 
-load_dotenv()  # Automatically reads from .env
+load_dotenv(dotenv_path="../.env")  # Automatically reads from .env
 
 api_id     = os.getenv("tg_api_id")
 api_hash   = os.getenv("tg_api_hash")
