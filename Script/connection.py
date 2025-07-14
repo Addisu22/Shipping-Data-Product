@@ -8,7 +8,7 @@ def getpgsql_connect():
     conn = psycopg2.connect(
 							host = pgsql_host,
 							port = pgsql_port,
-							db   = pgsql_db,
+							dbname   = pgsql_db,
 							user = pgsql_password,
 							password = pgsql_password)
     return conn
