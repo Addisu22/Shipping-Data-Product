@@ -1,4 +1,7 @@
 import psycopg2
+import os
+from dotenv import load_dotenv
+
 from config import host, port, db, user, password
 
 def getpgsql_connect():
