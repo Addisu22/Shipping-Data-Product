@@ -11,10 +11,10 @@ from connection import *
 load_dotenv()
 
 # PostgreSQL connection
-conn = getpgsql_connect()
+# conn = getpgsql_connect()
 
 # Ensure YOLO detections table
-def ensure_detection_table(cursor):
+def ensure_enriched_table(cursor, conn):
     cursor.execute("""
         CREATE SCHEMA IF NOT EXISTS enriched;
         CREATE TABLE IF NOT EXISTS enriched.fct_image_detections (
@@ -26,23 +26,23 @@ def ensure_detection_table(cursor):
             detected_at TIMESTAMP DEFAULT NOW()
         );
     """)
+    conn.commit()
 
 def detect_objects_in_images(image_dir, mapping_json):
-    model = YOLO("yolov8n.pt")  # lightweight YOLOv8 model
+    model = YOLO("yolov8n.pt")  # yolov8n small model
     detections = []
 
     with open(mapping_json, 'r', encoding='utf-8') as f:
-        image_map = json.load(f)
+        image_map = json.load(f)  # {image_filename: message_id}
 
     conn = getpgsql_connect()
     cursor = conn.cursor()
-    ensure_detection_table(cursor)
+    ensure_enriched_table(cursor, conn)
 
     for image_file, message_id in image_map.items():
         image_path = os.path.join(image_dir, image_file)
-
         if not os.path.exists(image_path):
-            print(f" Image not found: {image_path}")
+            print(f"Image not found: {image_path}")
             continue
 
         results = model(image_path)
@@ -52,16 +52,17 @@ def detect_objects_in_images(image_dir, mapping_json):
                 conf = float(box.conf)
                 detections.append((message_id, image_file, cls, conf))
 
-    # Insert into DB
     insert_query = """
         INSERT INTO enriched.fct_image_detections 
         (message_id, image_file, detected_class, confidence_score)
         VALUES %s
     """
-    execute_values(cursor, insert_query, detections)
-    conn.commit()
+    if detections:
+        execute_values(cursor, insert_query, detections)
+        conn.commit()
+
     cursor.close()
     conn.close()
 
-    print(f" Detected and saved {len(detections)} records.")
+    print(f"Detected and saved {len(detections)} records.")
     return detections
