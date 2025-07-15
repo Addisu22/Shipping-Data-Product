@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, DateTime
-from database import Base
+from dbconnection import Base
 
 # Adjust according to our actual dbt models
 class ProductMention(Base):
