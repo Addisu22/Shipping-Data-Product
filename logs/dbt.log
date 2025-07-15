@@ -22,3 +22,8 @@ Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
 Happy modeling!
 
 [0m09:49:03.400849 [info ] [MainThread]: Setting up your profile.
+[0m09:56:34.983696 [info ] [MainThread]: Profile Telegram_Med_pipeline written to C:\Users\hause\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m09:56:34.989783 [debug] [MainThread]: Command `dbt init` succeeded at 09:56:34.989783 after 451.71 seconds
+[0m09:56:34.993288 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F22EA6BA50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F230A6AA10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001F228D3A1D0>]}
+[0m09:56:34.996871 [debug] [MainThread]: Flushing usage events
+[0m09:56:36.405082 [debug] [MainThread]: An error was encountered while trying to flush usage events
