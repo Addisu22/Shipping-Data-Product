@@ -57,7 +57,8 @@ async def scrape_channel(channel_username, limit=100):
             # Save to JSON
             with open(json_path, "w", encoding="utf-8") as f:
                 json.dump(messages_data, f, indent=2, ensure_ascii=False)
-
+                
+            # Setup Logging at the Top of our Script
             print(f"Scraped {len(messages_data)} messages from {channel_username}")
             logging.info(f"Scraped {len(messages_data)} messages from {channel_username}")
 
