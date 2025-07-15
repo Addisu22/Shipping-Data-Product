@@ -3,4 +3,5 @@ pycache/
 .env
 *.ipynb_checkpoints
 .vscode/
+Connection.ipynb
 Data/
