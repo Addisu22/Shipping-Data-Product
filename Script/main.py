@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from typing import List
 from database import get_db
 from sqlalchemy.orm import Session
-import crud
+import Script.cruds as cruds
 import schemas
 
 app = FastAPI(
@@ -18,7 +18,7 @@ def get_top_products(limit: int = 10, db: Session = Depends(get_db)):
     
     - **limit**: Number of top products to return (default: 10)
     """
-    products = crud.get_top_products(db, limit=limit)
+    products = cruds.get_top_products(db, limit=limit)
     if not products:
         raise HTTPException(status_code=404, detail="No product mentions found")
     return products
@@ -30,7 +30,7 @@ def get_channel_activity(channel_name: str, db: Session = Depends(get_db)):
     
     - **channel_name**: Name of the channel to get activity for
     """
-    activity = crud.get_channel_activity(db, channel_name=channel_name)
+    activity = cruds.get_channel_activity(db, channel_name=channel_name)
     if not activity:
         raise HTTPException(
             status_code=404, 
@@ -45,7 +45,7 @@ def search_messages(query: str, db: Session = Depends(get_db)):
     
     - **query**: Keyword to search for in messages
     """
-    messages = crud.search_messages(db, query=query)
+    messages = cruds.search_messages(db, query=query)
     if not messages:
         raise HTTPException(
             status_code=404, 
