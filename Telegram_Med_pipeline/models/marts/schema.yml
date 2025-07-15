@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: fct_messages
+    columns:
+      - name: message_id
+        tests:
+          - not_null
+          - unique
+      - name: has_image
+        description: "True if message has image"
