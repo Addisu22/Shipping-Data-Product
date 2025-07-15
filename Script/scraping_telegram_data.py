@@ -54,7 +54,7 @@ async def scrape_channel_messages(channel_username, limit=100):
                         img_path = os.path.join(img_dir, f"{channel_username.replace('@', '')}_{message.id}.jpg")
                         await client.download_media(message, img_path)
                          # ✅ Save the image path in message
-                        msg["media_file_path"] = img_path
+                        msg["media_type"] = img_path
 
             with open(dir_path, 'w', encoding='utf-8') as f:
                 json.dump(messages_data, f, indent=2, ensure_ascii=False)
