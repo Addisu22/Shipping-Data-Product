@@ -9,7 +9,7 @@ load_dotenv('../.env')
 pgsql_pass= os.getenv("pgsql_pass")
 
 # Our actual PostgreSQL database connection string
-db_url = os.getenv("db_url", "postgresql://postgres:yourpassword@localhost:5432/telegram_db")
+db_url = os.getenv("db_url", "postgresql://postgres:pgsql_pass@localhost:5432/telegram_db")
 
 engine = create_engine(db_url)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
