@@ -43,3 +43,20 @@ Shipping Data Product
     ├── __init__.py
     ├── jobs.py
     └── ...
+
+Task 0 - Project Setup & Environment Management
+===============================================
+1. Initialize Git repository
+2. requirements.txt
+3. Dockerfile
+4. docker-compose.yml
+5. .env (example)
+Task 1 - Data Scraping and Collection
+
+Task 2 - Data Modeling with DBT
+
+Task 3 - Data Enrichment with YOLO
+
+Task 4 - FastAPI Analytical API
+
+Task 5 - Pipeline Orchestration with Dagster
