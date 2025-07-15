@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
 from typing import List
-from database import get_db
+from dbconnection   import get_db
 from sqlalchemy.orm import Session
 import Script.cruds as cruds
 import schemas
