@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models import ProductMention, ChannelActivity, Message
+from api.models import ProductMention, ChannelActivity, Message
 from typing import List, Optional
 
 def get_top_products(db: Session, limit: int = 10) -> List[ProductMention]:

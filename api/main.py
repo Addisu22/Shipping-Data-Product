@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from typing import List
 from dbconnection   import get_db
 from sqlalchemy.orm import Session
-import Script.cruds as cruds
+import api.cruds as cruds
 import schemas
 
 app = FastAPI(
