@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-api_id = int(os.getenv("api_id"))
-api_hash = os.getenv("api_hash")
+api_id     = os.getenv("tg_api_id")
+api_hash   = os.getenv("tg_api_hash")
 session_name = os.getenv("session_name")
 
 # Setup logging
