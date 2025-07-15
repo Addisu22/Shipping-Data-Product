@@ -2,7 +2,7 @@ import psycopg2
 import os
 from dotenv import load_dotenv
 
-from config import pgsql_host, pgsql_port, pgsql_db, pgsql_user, pgsql_password
+load_dotenv(dotenv_path="../.env")  # Automatically reads from .env
 
 def getpgsql_connect():
     conn = psycopg2.connect(
