@@ -2,8 +2,7 @@ with source as (
     select * from raw.raw_telegram_messages
 ),
 
-renamed as (
-    select
+renamed as (select
         message_id,
         sender_id,
         date::timestamp as message_date,
